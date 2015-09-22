@@ -212,8 +212,8 @@ int to_mftex(const GEN_PAR * pg, const OUT_PAR * po, int mode)
 		ftype = "Test G-Code";
 		scale_cmd = "";
 		pen_cmd = "M06 T%2d\n";	/* pen is tool number ? */
-		poly_start = "; Tool Up\nG01 Z%g\nG00 X %g Y %g\n";
-		poly_next = "G01 X %g Y %g\n";	/* Note tool handling (Z) is done in the writer */
+		poly_start = "; Tool Up\nG01 Z%g\nG00 X%g Y%g\n";
+		poly_next = "G01 X%g Y%g\n";	/* Note tool handling (Z) is done in the writer */
 		poly_last = poly_next;
 		poly_end = ";\n";	/* not sure what to do with this ? */
 		draw_dot = "\nG81 X%g Y%G Z%g R%g  ; Drill Hole\nG81\n";
@@ -548,7 +548,7 @@ int to_mftex(const GEN_PAR * pg, const OUT_PAR * po, int mode)
 			} else if (mode == 9 && toolz == 0) {	/* Tool still up!  */
 				chars_out =
 				    fprintf(md,
-					    "; Tool Down\nG01 Z%g\nG01 X %g Y %g\n",
+					    "; Tool Down\nG01 Z%g\nG01 X%g Y%g\n",
 					    po->zengage,
 					    (pt1.x - po->xmin) * xcoord2mm,
 					    (pt1.y -
